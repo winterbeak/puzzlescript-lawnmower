@@ -1,0 +1,2128 @@
+title PUZZLESCRIPT LAWNMOWER
+author snowdozer
+homepage www.puzzlescript.net
+realtime_interval 0.03
+background_color DarkGreen
+noundo
+run_rules_on_level_start
+
+========
+OBJECTS
+========
+
+Background
+Transparent
+
+Player
+Transparent
+
+
+
+(Left mower animation sprites)
+MowerLeftStill
+Red Black Gray Transparent
+31111
+00000
+00220
+00000
+31111
+
+(In the form of Mower<PointingDirection><SpriteSection><FrameNumber>)
+MowerLeftLeft1
+Red Black Gray Transparent
+33333
+33330
+33330
+33330
+33333
+
+MowerLeftLeft2
+Red Black Gray Transparent
+33331
+33300
+33300
+33300
+33331
+
+MowerLeftLeft3
+Red Black Gray Transparent
+33311
+33000
+33002
+33000
+33311
+
+MowerLeftLeft4
+Red Black Gray Transparent
+33111
+30000
+30022
+30000
+33111
+
+MowerLeftRight1
+Red Black Gray Transparent
+11113
+00003
+02203
+00003
+11113
+
+MowerLeftRight2
+Red Black Gray Transparent
+11133
+00033
+22033
+00033
+11133
+
+MowerLeftRight3
+Red Black Gray Transparent
+11333
+00333
+20333
+00333
+11333
+
+MowerLeftRight4
+Red Black Gray Transparent
+13333
+03333
+03333
+03333
+13333
+
+
+
+(Up mower animation sprites)
+MowerUpStill
+Red Black Gray Transparent
+30003
+10001
+10201
+10201
+10001
+
+MowerUpUp1
+Red Black Gray Transparent
+33333
+33333
+33333
+33333
+30003
+
+MowerUpUp2
+Red Black Gray Transparent
+33333
+33333
+33333
+30003
+10001
+
+MowerUpUp3
+Red Black Gray Transparent
+33333
+33333
+30003
+10001
+10201
+
+MowerUpUp4
+Red Black Gray Transparent
+33333
+30003
+10001
+10201
+10201
+
+MowerUpDown1
+Red Black Gray Transparent
+10001
+10201
+10201
+10001
+33333
+
+MowerUpDown2
+Red Black Gray Transparent
+10201
+10201
+10001
+33333
+33333
+
+MowerUpDown3
+Red Black Gray Transparent
+10201
+10001
+33333
+33333
+33333
+
+MowerUpDown4
+Red Black Gray Transparent
+10001
+33333
+33333
+33333
+33333
+
+
+
+(Right mower animation sprites)
+MowerRightStill
+Red Black Gray Transparent
+11113
+00000
+02200
+00000
+11113
+
+MowerRightRight1
+Red Black Gray Transparent
+33333
+03333
+03333
+03333
+33333
+
+MowerRightRight2
+Red Black Gray Transparent
+13333
+00333
+00333
+00333
+13333
+
+MowerRightRight3
+Red Black Gray Transparent
+11333
+00033
+20033
+00033
+11333
+
+MowerRightRight4
+Red Black Gray Transparent
+11133
+00003
+22003
+00003
+11133
+
+MowerRightLeft1
+Red Black Gray Transparent
+31111
+30000
+30220
+30000
+31111
+
+MowerRightLeft2
+Red Black Gray Transparent
+33111
+33000
+33022
+33000
+33111
+
+MowerRightLeft3
+Red Black Gray Transparent
+33311
+33300
+33302
+33300
+33311
+
+MowerRightLeft4
+Red Black Gray Transparent
+33331
+33330
+33330
+33330
+33331
+
+
+
+(Down mower animation sprites)
+MowerDownStill
+Red Black Gray Transparent
+10001
+10201
+10201
+10001
+30003
+
+MowerDownDown1
+Red Black Gray Transparent
+30003
+33333
+33333
+33333
+33333
+
+MowerDownDown2
+Red Black Gray Transparent
+10001
+30003
+33333
+33333
+33333
+
+MowerDownDown3
+Red Black Gray Transparent
+10201
+10001
+30003
+33333
+33333
+
+MowerDownDown4
+Red Black Gray Transparent
+10201
+10201
+10001
+30003
+33333
+
+MowerDownUp1
+Red Black Gray Transparent
+33333
+10001
+10201
+10201
+10001
+
+MowerDownUp2
+Red Black Gray Transparent
+33333
+33333
+10001
+10201
+10201
+
+MowerDownUp3
+Red Black Gray Transparent
+33333
+33333
+33333
+10001
+10201
+
+MowerDownUp4
+Red Black Gray Transparent
+33333
+33333
+33333
+33333
+10001
+
+
+
+(Used at the start of a level so you can press X when you're ready to start)
+MowerLeftNotStarted
+#783636 Black #6f6f6f Transparent
+31111
+00000
+00220
+00000
+31111
+
+MowerUpNotStarted
+#783636 Black #6f6f6f Transparent
+30003
+10001
+10201
+10201
+10001
+
+MowerRightNotStarted
+#783636 Black #6f6f6f Transparent
+11113
+00000
+02200
+00000
+11113
+
+MowerDownNotStarted
+#783636 Black #6f6f6f Transparent
+10001
+10201
+10201
+10001
+30003
+
+
+
+(Used in the explosion animation)
+MowerLeftIdle
+Red Black Gray Transparent
+31111
+00000
+00220
+00000
+31111
+
+MowerUpIdle
+Red Black Gray Transparent
+30003
+10001
+10201
+10201
+10001
+
+MowerRightIdle
+Red Black Gray Transparent
+11113
+00000
+02200
+00000
+11113
+
+MowerDownIdle
+Red Black Gray Transparent
+10001
+10201
+10201
+10001
+30003
+
+
+
+(Fixes rule order so that a frame isn't skipped)
+MowerLeftTemp
+Transparent
+
+MowerUpTemp
+Transparent
+
+MowerRightTemp
+Transparent
+
+MowerDownTemp
+Transparent
+
+
+Explosion1
+#d34a17 #fd9730 #fffa47 Transparent
+33033
+30003
+00100
+30003
+33033
+
+Explosion2
+#d34a17 #fd9730 #fffa47 Transparent
+30003
+00100
+01110
+00100
+30003
+
+Explosion3
+#d34a17 #fd9730 #fffa47 Transparent
+00000
+01110
+01210
+01110
+00000
+
+Explosion4
+#d34a17 #fd9730 #fffa47 Transparent
+00100
+01210
+12221
+01210
+00100
+
+Explosion5
+#d34a17 #fd9730 #fffa47 Transparent
+31113
+12221
+12321
+12221
+31113
+
+Explosion6
+#d34a17 #fd9730 #fffa47 Transparent
+31213
+12321
+23332
+12321
+31213
+
+Explosion7
+#d34a17 #fd9730 #fffa47 Transparent
+32323
+23332
+33333
+23332
+32323
+
+
+
+Heart3
+Pink DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+Heart2
+#1390ef DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+Heart1
+Orange DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+Heart3Blank
+#564d55 DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+Heart2Blank
+#48545e DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+Heart1Blank
+#5e5a51 DarkGreen
+10101
+00000
+00000
+10001
+11011
+
+CarvePowerIcon
+Pink #ebc2ed Darkgreen
+02020
+22222
+02120
+22222
+02020
+
+DashPowerIcon
+#1390ef LightBlue Darkgreen
+00122
+20012
+22001
+20012
+00122
+
+ExplodePowerIcon
+#d34a17 Orange #fffa47 Darkgreen
+30003
+01110
+11111
+31213
+12221
+
+CarvePowerIconBlank
+#564d55 DarkGreen
+11111
+10001
+10001
+10001
+11111
+
+DashPowerIconBlank
+#48545e DarkGreen
+11111
+10001
+10001
+10001
+11111
+
+ExplodePowerIconBlank
+#5e5a51 DarkGreen
+11111
+10001
+10001
+10001
+11111
+
+EmptyUI
+DarkGreen
+
+
+
+CarvePowerPickup
+Pink #ebc2ed Transparent
+02020
+22222
+02120
+22222
+02020
+
+DashPowerPickup
+#1390ef LightBlue Transparent
+00122
+20012
+22001
+20012
+00122
+
+ExplodePowerPickup
+#d34a17 Orange #fffa47 Transparent
+30003
+01110
+11111
+31213
+12221
+
+
+
+UnmowedSpawn
+Transparent
+
+Unmowed1
+Green DarkGreen LightGreen
+00200
+00102
+00020
+20010
+12000
+
+Unmowed2
+Green DarkGreen LightGreen
+00020
+01000
+02000
+20010
+10000
+
+Unmowed3
+Green DarkGreen LightGreen
+00100
+02000
+00020
+20001
+02000
+
+Unmowed4
+Green DarkGreen LightGreen
+00100
+00002
+02000
+20010
+10000
+
+Unmowed5
+Green DarkGreen LightGreen
+00010
+00002
+20000
+00100
+10200
+
+Mowed
+Green
+00000
+00000
+00000
+00000
+00000
+
+
+
+Flowers
+Green Pink #1390ef Orange Yellow
+01000
+14120
+01242
+03420
+00300
+
+FlowersShredded
+Green Pink #1390ef Orange Yellow
+10000
+00002
+03000
+00000
+00040
+
+FlowersShreddedTemp
+Transparent
+
+
+
+CarveMarkerCenter
+Pink Transparent
+11111
+11111
+11011
+11111
+11111
+
+CarveMarkerLeft1
+Pink Transparent
+11111
+11111
+10111
+11111
+11111
+
+CarveMarkerLeft2
+Pink Transparent
+11111
+11111
+01111
+11111
+11111
+
+CarveMarkerUp1
+Pink Transparent
+11111
+11011
+11111
+11111
+11111
+
+CarveMarkerUp2
+Pink Transparent
+11011
+11111
+11111
+11111
+11111
+
+CarveMarkerRight1
+Pink Transparent
+11111
+11111
+11101
+11111
+11111
+
+CarveMarkerRight2
+Pink Transparent
+11111
+11111
+11110
+11111
+11111
+
+CarveMarkerDown1
+Pink Transparent
+11111
+11111
+11111
+11011
+11111
+
+CarveMarkerDown2
+Pink Transparent
+11111
+11111
+11111
+11111
+11011
+
+CarveMarkerTemp1
+Transparent
+
+CarveMarkerTemp2
+Transparent
+
+CarveDashVertTemp
+Transparent
+
+CarveTemp
+Transparent
+
+
+
+DashTrailHoriz1
+#1390ef Lightblue Transparent
+00000
+00000
+00000
+00000
+00000
+
+DashTrailHoriz2
+#1390ef Lightblue Transparent
+11111
+00000
+00000
+00000
+11111
+
+DashTrailHoriz3
+#1390ef Lightblue Transparent
+22222
+11211
+00200
+11211
+22222
+
+DashTrailHoriz4
+#1390ef Lightblue Transparent
+22222
+12221
+22222
+12221
+22222
+
+DashTrailVert1
+#1390ef Lightblue Transparent
+00000
+00000
+00000
+00000
+00000
+
+DashTrailVert2
+#1390ef Lightblue Transparent
+10001
+10001
+10001
+10001
+10001
+
+DashTrailVert3
+#1390ef Lightblue Transparent
+21012
+21012
+22222
+21012
+21012
+
+DashTrailVert4
+#1390ef Lightblue Transparent
+22122
+22222
+22222
+22222
+22122
+
+DashLeftTemp
+Transparent
+
+DashUpTemp
+Transparent
+
+DashRightTemp
+Transparent
+
+DashDownTemp
+Transparent
+
+DashSound1
+Transparent
+
+DashSound2
+Transparent
+
+DashSound3
+Transparent
+
+DashSound4
+Transparent
+
+DashSound5
+Transparent
+
+
+
+ExplodePowerTemp1
+Transparent
+
+ExplodePowerTemp2
+Transparent
+
+
+
+RespawnTemp
+Transparent
+
+
+
+
+(Buffers inputs so that they are activated even if you're in between two tiles)
+EmptyBuffer
+Transparent
+
+BufferedLeft
+Transparent
+
+BufferedUp
+Transparent
+
+BufferedRight
+Transparent
+
+BufferedDown
+Transparent
+
+
+
+
+(Note: this occupies a different space from the buffered directions)
+BufferedDash
+Transparent
+
+
+
+=======
+LEGEND
+=======
+
+Buffer = EmptyBuffer or BufferedLeft or BufferedUp or BufferedRight or BufferedDown
+
+NonEmptyBuffer = BufferedLeft or BufferedUp or BufferedRight or BufferedDown
+
+Unmowed = Unmowed1 or Unmowed2 or Unmowed3 or Unmowed4 or Unmowed5
+
+StillMower = MowerLeftStill or MowerUpStill or MowerRightStill or MowerDownStill
+
+MowerIdle = MowerLeftIdle or MowerUpIdle or MowerRightIdle or MowerDownIdle
+
+MowerMovingLeftFront = MowerLeftStill or MowerLeftLeft1 or MowerLeftLeft2 or MowerLeftLeft3 or MowerLeftLeft4
+MowerMovingLeftBack = MowerLeftRight1 or MowerLeftRight2 or MowerLeftRight3 or MowerLeftRight4
+MowerMovingLeft = MowerMovingLeftFront or MowerMovingLeftBack
+
+MowerMovingUpFront = MowerUpStill or MowerUpUp1 or MowerUpUp2 or MowerUpUp3 or MowerUpUp4
+MowerMovingUpBack = MowerUpDown1 or MowerUpDown2 or MowerUpDown3 or MowerUpDown4
+MowerMovingUp = MowerMovingUpFront or MowerMovingUpBack
+
+MowerMovingRightFront = MowerRightStill or MowerRightRight1 or MowerRightRight2 or MowerRightRight3 or MowerRightRight4
+MowerMovingRightBack = MowerRightLeft1 or MowerRightLeft2 or MowerRightLeft3 or MowerRightLeft4
+MowerMovingRight = MowerMovingRightFront or MowerMovingRightBack
+
+MowerMovingDownFront = MowerDownStill or MowerDownDown1 or MowerDownDown2 or MowerDownDown3 or MowerDownDown4
+MowerMovingDownBack = MowerDownUp1 or MowerDownUp2 or MowerDownUp3 or MowerDownUp4
+MowerMovingDown = MowerMovingDownFront or MowerMovingDownBack
+
+MowerMoving = MowerMovingLeft or MowerMovingUp or MowerMovingRight or MowerMovingDown
+
+MowerNotStarted = MowerLeftNotStarted or MowerUpNotStarted or MowerRightNotStarted or MowerDownNotStarted
+
+MowerFrame1Front = MowerLeftLeft1 or MowerUpUp1 or MowerRightRight1 or MowerDownDown1
+MowerFrame1Back = MowerLeftRight1 or MowerUpDown1 or MowerRightLeft1 or MowerDownUp1
+
+MowerFrame2Back = MowerLeftRight2 or MowerUpDown2 or MowerRightLeft2 or MowerDownUp2
+MowerFrame3Front = MowerLeftLeft3 or MowerUpUp3 or MowerRightRight3 or MowerDownDown3
+MowerFrame4Front = MowerLeftLeft4 or MowerUpUp4 or MowerRightRight4 or MowerDownDown4
+
+MowerCarveMarkerCenter = StillMower or MowerFrame1Back or MowerFrame2Back or MowerFrame3Front or MowerFrame4Front
+
+CarveMarker = CarveMarkerCenter or CarveMarkerLeft1 or CarveMarkerLeft2 or CarveMarkerUp1 or CarveMarkerUp2 or CarveMarkerRight1 or CarveMarkerRight2 or CarveMarkerDown1 or CarveMarkerDown2
+CarveMarkerTemp = CarveMarkerTemp1 or CarveMarkerTemp2
+
+DashSound = DashSound1 or DashSound2 or DashSound3 or DashSound4 or DashSound5
+DashTrailHoriz = DashTrailHoriz1 or DashTrailHoriz2 or DashTrailHoriz3 or DashTrailHoriz4
+DashTrailVert = DashTrailVert1 or DashTrailVert2 or DashTrailVert3 or DashTrailVert4
+DashTrail = DashTrailHoriz or DashTrailVert
+DashTemp = DashLeftTemp or DashUpTemp or DashRightTemp or DashDownTemp
+
+ExplodePowerTemp = ExplodePowerTemp1 or ExplodePowerTemp2
+
+Explosion = Explosion1 or Explosion2 or Explosion3 or Explosion4 or Explosion5 or Explosion6 or Explosion7
+
+Heart = Heart3 or Heart2 or Heart1
+HeartBlank = Heart3Blank or Heart2Blank or Heart1Blank
+
+PowerPickup = CarvePowerPickup or DashPowerPickup or ExplodePowerPickup
+
+UI = Heart or HeartBlank or EmptyUI or CarvePowerIcon or DashPowerIcon or ExplodePowerIcon or CarvePowerIconBlank or DashPowerIconBlank or ExplodePowerIconBlank 
+
+Solid = UI
+
+. = UnmowedSpawn and Mowed
+* = Flowers and Mowed
+@ = EmptyBuffer and Player and MowerRightNotStarted and Mowed
+
+C = CarvePowerPickup and Mowed
+D = DashPowerPickup and Mowed
+E = ExplodePowerPickup and Mowed
+# = EmptyUI
+
+3 = Heart3
+2 = Heart2
+1 = Heart1
+4 = ExplodePowerIconBlank
+5 = DashPowerIconBlank
+6 = CarvePowerIconBlank
+
+=======
+SOUNDS
+=======
+
+Restart 85425106
+Endlevel 58426103
+StartGame 92442108
+CloseMessage 24554900
+MowerMoving Create 21159707  (Moving sound)
+Unmowed Destroy 57280707  (Changes mowing sound when grass is mowed)
+Explosion1 Create 75944302  (Normal explosion)
+ExplodePowerTemp1 Create 79386502  (Big explosion)
+ExplodePowerTemp1 Create 90808302  (Big explosion)
+
+(Power pickups)
+CarvePowerPickup Destroy 72716109
+DashPowerPickup Destroy 58161503
+ExplodePowerPickup Destroy 93738102
+
+SFX10 93657306  (Mower starting)
+
+SFX0 85734904  (Dashing, hitting the wall)
+SFX1 91808701  (Also dashing, laser variant1)
+SFX2 94836701  (Also dashing, laser variant2)
+SFX3 66675501  (Also dashing, laser variant3)
+SFX4 35342501  (Also dashing, laser variant4)
+SFX5 71136501  (Also dashing, laser variant5)
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Player
+EmptyBuffer, NonEmptyBuffer, BufferedDash
+
+Mowed
+Unmowed, UnmowedSpawn, Flowers, FlowersShredded, FlowersShreddedTemp, PowerPickup
+
+CarveTemp
+CarveMarker, CarveMarkerTemp, CarveDashVertTemp, ExplodePowerTemp
+
+MowerNotStarted, MowerIdle, MowerMovingLeft, MowerLeftTemp, MowerMovingUp, MowerUpTemp, MowerMovingRight, MowerRightTemp, MowerMovingDown, MowerDownTemp
+
+DashTrail, DashTemp, DashSound, Explosion, RespawnTemp
+
+UI
+
+======
+RULES
+======
+
+(Spawns random unmowed grass sprites)
+[ UnmowedSpawn ] -> [ random Unmowed ]
+
+(Only starts once X is pressed to start)
+[ LEFT Player ] [ MowerNotStarted ] -> [ Player ] [ MowerLeftNotStarted ]
+[ UP Player ] [ MowerNotStarted ] -> [ Player ] [ MowerUpNotStarted ]
+[ RIGHT Player ] [ MowerNotStarted ] -> [ Player ] [ MowerRightNotStarted ]
+[ DOWN Player ] [ MowerNotStarted ] -> [ Player ] [ MowerDownNotStarted ]
+
+[ ACTION Player ] [ MowerLeftNotStarted ] -> [ Player ] [ MowerLeftStill ] SFX10
+[ ACTION Player ] [ MowerUpNotStarted ] -> [ Player ] [ MowerUpStill ] SFX10
+[ ACTION Player ] [ MowerRightNotStarted ] -> [ Player ] [ MowerRightStill ] SFX10
+[ ACTION Player ] [ MowerDownNotStarted ] -> [ Player ] [ MowerDownStill ] SFX10
+
+
+
+(((MOVEMENT ANIMATION)))
+(Leftwards movement animation)
+RIGHT [ MowerLeftLeft4 | MowerLeftRight4 ] -> [ MowerLeftTemp | ]
+RIGHT [ MowerLeftLeft3 | MowerLeftRight3 ] -> [ MowerLeftLeft4 | MowerLeftRight4 ]
+RIGHT [ MowerLeftLeft2 | MowerLeftRight2 ] -> [ MowerLeftLeft3 | MowerLeftRight3 ]
+RIGHT [ MowerLeftLeft1 | MowerLeftRight1 ] -> [ MowerLeftLeft2 | MowerLeftRight2 ]
+RIGHT [ No Solid | MowerLeftStill ] -> [ MowerLeftLeft1 | MowerLeftRight1 ]
+[ MowerLeftTemp ] -> [ MowerLeftStill ]
+
+(Upwards movement animation)
+DOWN [ MowerUpUp4 | MowerUpDown4 ] -> [ MowerUpTemp | ]
+DOWN [ MowerUpUp3 | MowerUpDown3 ] -> [ MowerUpUp4 | MowerUpDown4 ]
+DOWN [ MowerUpUp2 | MowerUpDown2 ] -> [ MowerUpUp3 | MowerUpDown3 ]
+DOWN [ MowerUpUp1 | MowerUpDown1 ] -> [ MowerUpUp2 | MowerUpDown2 ]
+DOWN [ No Solid | MowerUpStill ] -> [ MowerUpUp1 | MowerUpDown1 ]
+[ MowerUpTemp ] -> [ MowerUpStill ]
+
+(Rightwards movement animation)
+RIGHT [ MowerRightLeft4 | MowerRightRight4 ] -> [ | MowerRightTemp ]
+RIGHT [ MowerRightLeft3 | MowerRightRight3 ] -> [ MowerRightLeft4 | MowerRightRight4 ]
+RIGHT [ MowerRightLeft2 | MowerRightRight2 ] -> [ MowerRightLeft3 | MowerRightRight3 ]
+RIGHT [ MowerRightLeft1 | MowerRightRight1 ] -> [ MowerRightLeft2 | MowerRightRight2 ]
+RIGHT [ MowerRightStill | No Solid ] -> [ MowerRightLeft1 | MowerRightRight1 ]
+[ MowerRightTemp ] -> [ MowerRightStill ]
+
+(Downwards movement animation)
+DOWN [ MowerDownUp4 | MowerDownDown4 ] -> [ | MowerDownTemp ]
+DOWN [ MowerDownUp3 | MowerDownDown3 ] -> [ MowerDownUp4 | MowerDownDown4 ]
+DOWN [ MowerDownUp2 | MowerDownDown2 ] -> [ MowerDownUp3 | MowerDownDown3 ]
+DOWN [ MowerDownUp1 | MowerDownDown1 ] -> [ MowerDownUp2 | MowerDownDown2 ]
+DOWN [ MowerDownStill | No Solid ] -> [ MowerDownUp1 | MowerDownDown1 ]
+[ MowerDownTemp ] -> [ MowerDownStill ]
+
+
+
+(((MOVEMENT INPUTS)))
+(Detect input)
+[ LEFT Player ] [ Buffer ] -> [ Player ] [ BufferedLeft ]
+[ UP Player ] [ Buffer ] -> [ Player ] [ BufferedUp ]
+[ RIGHT Player ] [ Buffer ] -> [ Player ] [ BufferedRight ]
+[ DOWN Player ] [ Buffer ] -> [ Player ] [ BufferedDown ]
+
+(Allows inputs to be made one frame late, game feels more responsive this way)
+late [ NonEmptyBuffer ] [ MowerFrame1Front | MowerFrame1Back ] -> [ NonEmptyBuffer ] [ | MowerLeftStill ]
+
+(Evaluates the input once you reach the next tile)
+late [ BufferedLeft ] [ StillMower ] -> [ EmptyBuffer ] [ MowerLeftStill ]
+late [ BufferedUp ] [ StillMower ] -> [ EmptyBuffer ] [ MowerUpStill ]
+late [ BufferedRight ] [ StillMower ] -> [ EmptyBuffer ] [ MowerRightStill ]
+late [ BufferedDown ] [ StillMower ] -> [ EmptyBuffer ] [ MowerDownStill ]
+
+(Allows you to turn backwards on any frame of the animation (i.e. you don't have to wait until the next tile if you're turning backwards))
+late [ BufferedLeft ] [ MowerRightRight2 | MowerRightLeft2 ] -> [ EmptyBuffer ] [ MowerLeftRight3 No Unmowed | MowerLeftLeft3 ]
+late [ BufferedLeft ] [ MowerRightRight3 | MowerRightLeft3 ] -> [ EmptyBuffer ] [ MowerLeftRight2 No Unmowed | MowerLeftLeft2 ]
+late [ BufferedLeft ] [ MowerRightRight4 | MowerRightLeft4 ] -> [ EmptyBuffer ] [ MowerLeftRight1 No Unmowed | MowerLeftLeft1 ]
+
+late [ BufferedUp ] [ MowerDownDown2 | MowerDownUp2 ] -> [ EmptyBuffer ] [ MowerUpDown3 No Unmowed | MowerUpUp3 ]
+late [ BufferedUp ] [ MowerDownDown3 | MowerDownUp3 ] -> [ EmptyBuffer ] [ MowerUpDown2 No Unmowed | MowerUpUp2 ]
+late [ BufferedUp ] [ MowerDownDown4 | MowerDownUp4 ] -> [ EmptyBuffer ] [ MowerUpDown1 No Unmowed | MowerUpUp1 ]
+
+late [ BufferedRight ] [ MowerLeftLeft2 | MowerLeftRight2 ] -> [ EmptyBuffer ] [ MowerRightLeft3 No Unmowed | MowerRightRight3 ]
+late [ BufferedRight ] [ MowerLeftLeft3 | MowerLeftRight3 ] -> [ EmptyBuffer ] [ MowerRightLeft2 No Unmowed | MowerRightRight2 ]
+late [ BufferedRight ] [ MowerLeftLeft4 | MowerLeftRight4 ] -> [ EmptyBuffer ] [ MowerRightLeft1 No Unmowed | MowerRightRight1 ]
+
+late [ BufferedDown ] [ MowerUpUp2 | MowerUpDown2 ] -> [ EmptyBuffer ] [ MowerDownUp3 No Unmowed | MowerDownDown3 ]
+late [ BufferedDown ] [ MowerUpUp3 | MowerUpDown3 ] -> [ EmptyBuffer ] [ MowerDownUp2 No Unmowed | MowerDownDown2 ]
+late [ BufferedDown ] [ MowerUpUp4 | MowerUpDown4 ] -> [ EmptyBuffer ] [ MowerDownUp1 No Unmowed | MowerDownDown1 ]
+
+
+
+(((USING DASH POWER)))
+(Place the dashtemp)
+[ ACTION Player ] [ DashPowerIcon ] -> [ Player ] [ DashPowerIcon BufferedDash ]
+
+(Unless a directional input is buffered, place the temp dash.
+If a directional input is buffered, this will wait until that input makes the mower turn.)
+[ EmptyBuffer ] [ BufferedDash ] [ MowerMovingLeftFront ] -> [ EmptyBuffer ] [ random DashSound ] [ MowerMovingLeftFront DashLeftTemp ] SFX0
+[ EmptyBuffer ] [ BufferedDash ] [ MowerMovingUpFront ] -> [ EmptyBuffer ] [ random DashSound ] [ MowerMovingUpFront DashUpTemp ] SFX0
+[ EmptyBuffer ] [ BufferedDash ] [ MowerMovingRightFront ] -> [ EmptyBuffer ] [ random DashSound ] [ MowerMovingRightFront DashRightTemp ] SFX0
+[ EmptyBuffer ] [ BufferedDash ] [ MowerMovingDownFront ] -> [ EmptyBuffer ] [ random DashSound ] [ MowerMovingDownFront DashDownTemp ] SFX0
+
+[ DashSound1 ] -> [ ] SFX1
+[ DashSound2 ] -> [ ] SFX2
+[ DashSound3 ] -> [ ] SFX3
+[ DashSound4 ] -> [ ] SFX4
+[ DashSound5 ] -> [ ] SFX5
+
+(Play the dash trail animations)
+[ DashTrailHoriz4 ] -> [ ]
+[ DashTrailHoriz3 ] -> [ DashTrailHoriz4 ]
+[ DashTrailHoriz2 ] -> [ DashTrailHoriz3 ]
+[ DashTrailHoriz1 ] -> [ DashTrailHoriz2 ]
+
+[ DashTrailVert4 ] -> [ ]
+[ DashTrailVert3 ] -> [ DashTrailVert4 ]
+[ DashTrailVert2 ] -> [ DashTrailVert3 ]
+[ DashTrailVert1 ] -> [ DashTrailVert2 ]
+
+(Move the dash temp until it hits a solid or a carve pickup)
+(Note: In regards to the CarvePowerPickup detection, it's done one tile later for vertical dashes due to the way CarveDashVertTemp works)
+RIGHT [ no Solid no CarvePowerPickup | DashLeftTemp ] -> [ DashLeftTemp | DashTrailHoriz1 ]
+DOWN [ no Solid | DashUpTemp no CarvePowerPickup ] -> [ DashUpTemp | DashTrailVert1 ]
+RIGHT [ DashRightTemp | no Solid no CarvePowerPickup ] -> [ DashTrailHoriz1 | DashRightTemp ]
+DOWN [ DashDownTemp no CarvePowerPickup | no Solid ] -> [ DashTrailVert1 | DashDownTemp ]
+
+(If it hit a carve pickup, move until a solid is reached, while placing down carving temps)
+RIGHT [ no Solid | DashLeftTemp ] -> [ DashLeftTemp | DashTrailHoriz1 CarveTemp ]
+DOWN [ no Solid | DashUpTemp ] -> [ DashUpTemp | DashTrailVert1 CarveDashVertTemp ]
+RIGHT [ DashRightTemp | no Solid ] -> [ DashTrailHoriz1 CarveTemp | DashRightTemp ]
+DOWN [ DashDownTemp | no Solid ] -> [ DashTrailVert1 CarveDashVertTemp | DashDownTemp ]
+
+(Place CarveTemps on both sides of the CarveDashVertTemp)
+HORIZONTAL [ CarveDashVertTemp | ] -> [ CarveDashVertTemp | CarveTemp ]
+[ CarveDashVertTemp ] -> [ ]
+
+(Places carvetemps in a way such that the carve and dash powers synergize)
+RIGHT [ CarvePowerIcon ] [ DashTrailHoriz1 ] -> [ CarvePowerIcon ] [ DashTrailHoriz1 CarveTemp ]
+RIGHT [ CarvePowerIcon ] [ no CarveTemp | DashTrailVert1 | no CarveTemp ] -> [ CarvePowerIcon ] [ CarveTemp | DashTrailVert1 | CarveTemp ]
+
+(Delete all mowers)
+[ DashTemp ] [ MowerMoving ] -> [ DashTemp ] [ ]
+
+(Mow lawn and pick up powerups where the dash trail touches)
+[ DashTrail Unmowed ] -> [ DashTrail Mowed ]
+[ DashTrail Flowers ] -> [ DashTrail FlowersShreddedTemp ]
+
+[ DashTrail CarvePowerPickup ] [ CarvePowerIconBlank ] -> [ DashTrail ] [ CarvePowerIcon ]
+[ DashTrail ExplodePowerPickup ] [ ExplodePowerIconBlank ] -> [ DashTrail ] [ ExplodePowerIcon ]
+
+[ DashTrail PowerPickup ] -> [ DashTrail ]
+
+(Spawn a mower where the dash temp ended up)
+[ DashLeftTemp ] -> [ MowerLeftStill ]
+[ DashUpTemp ] -> [ MowerUpStill ]
+[ DashRightTemp ] -> [ MowerRightStill ]
+[ DashDownTemp ] -> [ MowerDownStill ]
+
+
+
+(((MOWS THE LAWN)))
+(Mows the lawn)
+[ Unmowed StillMower ] -> [ StillMower ]
+
+(Picks up powerups)
+[ CarvePowerPickup StillMower ] [ CarvePowerIconBlank ] -> [ StillMower ] [ CarvePowerIcon ]
+[ DashPowerPickup StillMower ] [ DashPowerIconBlank ] -> [ StillMower ] [ DashPowerIcon ]
+[ ExplodePowerPickup StillMower ] [ ExplodePowerIconBlank ] -> [ StillMower ] [ ExplodePowerIcon ]
+
+[ PowerPickup StillMower ] -> [ StillMower ]
+
+
+
+(((USING CARVE POWER)))
+(Actually mows the lawn)
+RIGHT [ CarvePowerIcon ] [ | StillMower | ] -> [ CarvePowerIcon ] [ CarveTemp | StillMower CarveTemp | CarveTemp ]
+VERTICAL [ CarveTemp | Unmowed ] -> [ CarveTemp | ]
+VERTICAL [ CarveTemp | Flowers ] -> [ CarveTemp | FlowersShreddedTemp ]
+[ CarveTemp Unmowed ] -> [ CarveTemp ]
+[ CarveTemp Flowers ] -> [ CarveTemp FlowersShreddedTemp ]
+[ CarveTemp ] -> [ ]
+
+(Carve markers)
+[ CarveMarker ] -> [ ]
+RIGHT [ CarvePowerIcon ] [ | MowerCarveMarkerCenter | ] -> [ CarvePowerIcon ] [ CarveMarkerTemp1 | MowerCarveMarkerCenter CarveMarkerTemp1 | CarveMarkerTemp1 ]
+VERTICAL [ CarveMarkerTemp1 | ] -> [ CarveMarkerTemp1 | CarveMarkerTemp2 ]
+[ StillMower ] [ CarveMarkerTemp ] -> [ StillMower ] [ CarveMarkerCenter ]
+[ MowerLeftLeft1 ] [ CarveMarkerTemp ] -> [ MowerLeftLeft1 ] [ CarveMarkerLeft1 ]
+[ MowerLeftLeft2 ] [ CarveMarkerTemp ] -> [ MowerLeftLeft2 ] [ CarveMarkerLeft2 ]
+[ MowerLeftLeft3 ] [ CarveMarkerTemp ] -> [ MowerLeftLeft3 ] [ CarveMarkerRight2 ]
+[ MowerLeftLeft4 ] [ CarveMarkerTemp ] -> [ MowerLeftLeft4 ] [ CarveMarkerRight1 ]
+[ MowerUpUp1 ] [ CarveMarkerTemp ] -> [ MowerUpUp1 ] [ CarveMarkerUp1 ]
+[ MowerUpUp2 ] [ CarveMarkerTemp ] -> [ MowerUpUp2 ] [ CarveMarkerUp2 ]
+[ MowerUpUp3 ] [ CarveMarkerTemp ] -> [ MowerUpUp3 ] [ CarveMarkerDown2 ]
+[ MowerUpUp4 ] [ CarveMarkerTemp ] -> [ MowerUpUp4 ] [ CarveMarkerDown1 ]
+[ MowerRightRight1 ] [ CarveMarkerTemp ] -> [ MowerRightRight1 ] [ CarveMarkerRight1 ]
+[ MowerRightRight2 ] [ CarveMarkerTemp ] -> [ MowerRightRight2 ] [ CarveMarkerRight2 ]
+[ MowerRightRight3 ] [ CarveMarkerTemp ] -> [ MowerRightRight3 ] [ CarveMarkerLeft2 ]
+[ MowerRightRight4 ] [ CarveMarkerTemp ] -> [ MowerRightRight4 ] [ CarveMarkerLeft1 ]
+[ MowerDownDown1 ] [ CarveMarkerTemp ] -> [ MowerDownDown1 ] [ CarveMarkerDown1 ]
+[ MowerDownDown2 ] [ CarveMarkerTemp ] -> [ MowerDownDown2 ] [ CarveMarkerDown2 ]
+[ MowerDownDown3 ] [ CarveMarkerTemp ] -> [ MowerDownDown3 ] [ CarveMarkerUp2 ]
+[ MowerDownDown4 ] [ CarveMarkerTemp ] -> [ MowerDownDown4 ] [ CarveMarkerUp1 ]
+
+
+
+(((EXPLOSION ANIMATION)))
+(Removes a heart and all powerups when the explosion happens)
+DOWN [ Heart3 | no Heart2 ] [ Explosion1 ] -> [ Heart3Blank | ] [ Explosion1 ]
+DOWN [ Heart2 | no Heart1 ] [ Explosion1 ] -> [ Heart2Blank | ] [ Explosion1 ]
+[ Heart1 ] [ Explosion1 ] -> [ Heart1Blank ] [ Explosion1 ]
+
+[ Explosion1 ] [ CarvePowerIcon ] -> [ Explosion1 ] [ CarvePowerIconBlank ]
+[ Explosion1 ] [ DashPowerIcon ] -> [ Explosion1 ] [ DashPowerIconBlank ]
+[ Explosion1 ] [ ExplodePowerIcon ] -> [ Explosion1 ] [ ExplodePowerIconBlank ]
+
+(Respawns the player if any hearts are left after one is removed)
+[ RespawnTemp ] [ Heart ] [ Player ]  [ Buffer ] -> [ ] [ Heart ] [ Player MowerRightNotStarted ]  [ EmptyBuffer ]
+[ RespawnTemp ] -> [ ]
+
+(Actually carries out the animation)
+[ Explosion7 ] [ Player no RespawnTemp ] -> [ ] [ Player RespawnTemp ]
+[ Explosion7 ] -> [ ]
+[ Explosion6 ] -> [ Explosion7 ]
+[ Explosion5 ] -> [ Explosion6 ]
+[ Explosion4 MowerIdle ] -> [ Explosion5 ]  (This frame hides the mower)
+[ Explosion4 ] -> [ Explosion5 ]
+[ Explosion3 ] -> [ Explosion4 ]
+[ Explosion2 ] -> [ Explosion3 ]
+[ Explosion1 ] -> [ Explosion2 ]
+
+(If the mower treads upon a flower, shred it)
+[ Flowers StillMower ] -> [ FlowersShreddedTemp StillMower ]
+
+(As soon as a flower is shredded and the mower is fully on a tile, explode the mower)
+[ FlowersShreddedTemp ] [ MowerLeftStill ] -> [ FlowersShredded ] [ MowerLeftIdle Explosion1 ]
+[ FlowersShreddedTemp ] [ MowerUpStill ] -> [ FlowersShredded ] [ MowerUpIdle Explosion1 ]
+[ FlowersShreddedTemp ] [ MowerRightStill ] -> [ FlowersShredded ] [ MowerRightIdle Explosion1 ]
+[ FlowersShreddedTemp ] [ MowerDownStill ] -> [ FlowersShredded ] [ MowerDownIdle Explosion1 ]
+
+
+
+(Uses the explode power)
+(NOTE: This relis on the fact that ExplodePowerIcon is hidden on the very next frame after this rule is executed)
+HORIZONTAL [ ExplodePowerIcon ] [ Explosion1 ] -> [ ExplodePowerIcon ] [ Explosion1 ExplodePowerTemp1 ]
+HORIZONTAL [ ExplodePowerIcon ] [ Explosion1 | ] -> [ ExplodePowerIcon ] [ Explosion1 | ExplodePowerTemp1 ]
+HORIZONTAL [ ExplodePowerIcon ] [ Explosion1 | | ] -> [ ExplodePowerIcon ] [ Explosion1 | | ExplodePowerTemp1 ]
+HORIZONTAL [ ExplodePowerIcon ] [ Explosion1 | | | ] -> [ ExplodePowerIcon ] [ Explosion1 | | | ExplodePowerTemp1 ]
+VERTICAL [ ExplodePowerTemp1 | ] -> [ ExplodePowerTemp1 | ExplodePowerTemp2 ]
+VERTICAL [ ExplodePowerTemp1 | | ] -> [ ExplodePowerTemp1 | | ExplodePowerTemp2 ]
+VERTICAL [ ExplodePowerTemp1 | | | ] -> [ ExplodePowerTemp1 | | | ExplodePowerTemp2 ]
+[ ExplodePowerTemp Unmowed ] -> [ Explosion1 ]
+[ ExplodePowerTemp Flowers ] -> [ Explosion1 FlowersShredded ]
+[ ExplodePowerTemp no Solid ] -> [ Explosion1 ]
+[ ExplodePowerTemp ] -> [ ]
+
+(Get rid of any excess temps after the explosion starts)
+[ Explosion1 ] [ FlowersShreddedTemp ] -> [ Explosion1 ] [ FlowersShredded ]
+
+
+
+==============
+WINCONDITIONS
+==============
+
+no Unmowed
+no DashTrail
+no Explosion
+
+=======
+LEVELS
+=======
+
+message PRESS X TO START MOWIN'
+3.......#
+#.......#
+#.......#
+#..@....#
+#.......#
+#.......#
+#.......#
+
+message PRESS R TO RESTART
+3*******#
+#.......#
+#..***..#
+#..*@*..#
+#.......#
+#.......#
+#*******#
+
+message REMEMBER, KID: MOW THE FLOWERS GET KAPOWERED
+3*******#
+#**...**#
+#*.....*#
+#*..*..*#
+#*..@..*#
+#**...**#
+#*******#
+
+message A NEW LAWNMOWER COSTS $300
+3.......#
+#.*.....#
+#..*....#
+#...*...#
+#....*..#
+#.....*.#
+#@......#
+
+message SO DON'T BE EXPLODING ALL WILLY NILLY
+3*********#
+#**.***.**#
+#@........#
+#**.***.**#
+#*********#
+
+message SOMETIMES YOU WILL HAVE MORE HEARTS TO WORK WITH
+3*********#
+2*.......*#
+#*.*****.*#
+#*.*...*.*#
+#*@..*...*#
+#*.*...*.*#
+#*.*****.*#
+#*.......*#
+#*********#
+
+message BUT THAT DOESN'T MEAN YOU SHOULDN'T BE CAREFUL
+3###***####
+###*...*###
+#**..*..**#
+#@..*#*...#
+#***###***#
+
+message YOU MAY BE WONDERING WHY THE FLOWERS EXPLODE
+3####***###
+2###*...*##
+1***..*..*#
+#@...***.*#
+#***..*..*#
+####*...*##
+#####***###
+
+message WELL, IT'S NOT THE FLOWERS THAT EXPLODE
+3*************#
+2*...........*#
+#*.*...*...*.*#
+#*@..*...*...*#
+#*.*...*...*.*#
+#*...........*#
+#*************#
+
+message IT'S THE LAWNMOWER THAT EXPLODES
+3***********#
+#*.........*#
+#*.*.....*.*#
+#*....*....*#
+#*.@.***...*#
+#*....*....*#
+#*.*.....*.*#
+#*.........*#
+#***********#
+
+message HMM, WE MIGHT NEED TO PURPOSEFULLY EXPLODE ON THIS ONE
+3***********#
+2...*...*...#
+1@..*...*...#
+#...*...*...#
+#***********#
+
+message WELL, CAN'T BE HELPED.  BUSINESS IS BUSINESS
+3*********#
+2*.......*#
+1*..***..*#
+#*.*****.*#
+#*@*****.*#
+#*.*****.*#
+#*..***..*#
+#*.......*#
+#*********#
+
+message MAYBE A POWERUP WILL HELP OUT A LITTLE
+3*********#
+#*.......*#
+#*.......*#
+#*.......*#
+#*..@.C..*#
+#*.......*#
+#*.......*#
+#*.......*#
+6*********#
+
+message YEAH, THAT'S BETTER, RIGHT?
+3************#
+2*..........*#
+#*.*......*.*#
+#*..........*#
+#*..........*#
+#*..@....C..*#
+#*..........*#
+#*..........*#
+#*.*......*.*#
+#*..........*#
+6************#
+
+message HAVE I EVER TOLD YOU HOW MUCH I LOVE MOWED LAWNS?
+3*********#
+#*.......*#
+#*.......*#
+#*@.....C*#
+#*.......*#
+#*.......*#
+6*********#
+
+message AS I ALWAYS SAY, A MOWED LAWN IS A LOAD GONE
+3************#
+#*........*.*#
+#*........*.*#
+#*........*.*#
+#*........*.*#
+#*.@....C...*#
+#*........*.*#
+#*........*.*#
+#*........*.*#
+#*........*.*#
+6************#
+
+message EVEN THOUGH WE'VE GOT HUGE DEBTS FROM THE EXPLODED MOWERS
+3*********#
+2*....*.**#
+#*....*.**#
+#......*.*#
+#..@.C.*.*#
+#......*.*#
+#*....*.**#
+#*....*.**#
+6*********#
+
+message THE SIGHT OF A CLEAN SHAVEN LAWN MAKES IT ALL WORTH IT
+3*************#
+2*...........*#
+#*...........*#
+#*@.C..C..C..*#
+#*...........*#
+#*...........*#
+##########****#
+#*...........*#
+#*...........*#
+#*..C..C..C..*#
+#*...........*#
+#*...........*#
+6*************#
+
+message RIDDING THE GROUND OF ITS IMPERFECTIONS
+3***********#.
+2..........#.#
+1...........*#
+#.@C..C..C..*#
+#...........*#
+#..........#.#
+6***********#.
+
+message CLEANSING THE EARTH OF ITS VILE GREEN HAIRS
+3*********.*.#
+2*****...****#
+1***.........#
+#*......C....#
+#............#
+#...@........#
+#............#
+#*......C....#
+#***.........#
+#*****...****#
+6*********.*.#
+
+message OH?  THESE WALLS LOOK KINDA FUNKY
+3...*.*.*.*...#
+2...C.C.C.C...#
+#...CCCCCCC...#
+#.@...........#
+#...CCCCCCC...#
+#...C.C.C.C...#
+6...*.*.*.*...#
+
+message KID, WHAT DO YOU SAY WE MOVE TO THE CITY?
+3CCCCCCCCCCCC#
+#C...C......C#
+#C.C.C.***C.C#
+#C@C.C.*....C#
+#CC..C.***CCC#
+#CC.CC......C#
+#C..CCCCCCC.C#
+#C.CCCCCCC..C#
+#C.........CC#
+6CCCCCCCCCCCC#
+
+message I HEARD THE CITY HAS A LOTTA LAWNS
+3CCCCCCCCCCCC#
+#C...C......C#
+#C.C.C.CCCC.C#
+#C@C.C.C....C#
+#CC..C.CCCCCC#
+#CC.CC......C#
+#C..CCCCCCC.C#
+#C.CCCCCCC..C#
+#C.........CC#
+6CCCCCCCCCCCC#
+
+message I ALSO HEARD THE CITY HAS SOME AMAZING MOWING TECH
+3*****************#
+#**........***...*#
+#*.........***...*#
+#*.........***...*#
+#*....**...*.....*#
+#*...***.........*#
+#*...*.......*...*#
+#*.........***...*#
+#*.....*...**....*#
+#*.@.***.........*#
+#*.C.***.........*#
+6*...***........**#
+
+message LIKE BOXES THAT CRUSH GRASS WHEN PUSHED
+3************#
+#*@........**#
+#*.C........*#
+#*..........*#
+#*...*......*#
+#*....*.***.*#
+#*..........*#
+#*....*.*.*.*#
+#*....*...*.*#
+#*....*.**..*#
+#**........**#
+6************#
+
+message OR GADGETS THAT LET YOU PRESS X TO DASH 
+3.............#
+#.............#
+#.............#
+#....@...D....#
+#.............#
+5.............#
+#.............#
+
+message HERE IS YOUR FUN
+3............*#
+#............*#
+#............*#
+#....@...D...##
+#............*#
+5............*#
+#............*#
+
+message MAN, MOVING TO THE CITY WAS THE RIGHT CHOICE
+3.....#####.....#
+2.....#####.....#
+#.....#####.....#
+#..@..*****.....#
+#.....#####.....#
+5.....#####.....#
+#D....#####....D#
+
+message WE'RE MOWING MORE LAWNS THAN EVER
+3##########....*#
+###########.....#
+###########.....#
+#.....*****..@.D#
+###########.....#
+5##########.....#
+###########*....#
+
+message IT'S BEAUTIFUL, ISN'T IT?  THE SIGHT OF CLEAN YARDS
+3***#***#***#
+2*.*.*.*#*.*#
+1*.*#*.*#*.*#
+#*D*#*.*#*.*#
+#*.*#*D*#*.*#
+#*.*#*.*#*.*#
+5*@*#*.*.*.*#
+#***#***#***#
+
+message YOU KNOW, KID, I ALWAYS HAD A DREAM
+3***#####***#
+#*...***...*#
+#*.*.***.*.*#
+##.........##
+##**.***.**##
+##**@*.*D**##
+##**.***.**##
+##.........##
+#*.*.***.*.*#
+5*...***...*#
+#***#####***#
+
+message A DREAM THAT ONE DAY, ALL THE LAWNS WOULD BE MOWED
+3***********************#
+##@....................*#
+#*D*.*.*.*.*.*.*.*.*.*.*#
+5*.....................##
+#***********************#
+
+message LUDICROUS, I KNOW, BUT STILL OH SO TANTALIZING
+3...*.*.*.*...#
+2...*.*.*.*...#
+#...*.*.*.*...#
+#D@.*.*.*.*..D#
+#...*.*.*.*...#
+5...*.*.*.*...#
+#...*.*.*.*...#
+
+message YEAH, SOME DREAMS HAVE TO STAY DREAMS
+3################################################
+############################################...##
+#@D............................................*#
+5###########################################...##
+#################################################
+
+message BUT, TO BE HONEST?  MOWING THESE CITY LAWNS IS KINDA NICE TOO
+3*#*******#*#
+#*.........*#
+#*.........##
+##.........*#
+##.........*#
+#*..@...D..##
+#*..*****..*#
+#*..*****..*#
+#*..*****..*#
+5*..*****..*#
+#**#*****#**#
+
+message I COULD PROBABLY DIE HAPPY MOWING OUT HERE
+3...******.*#
+2.D.********#
+1...*******.#
+#...********#
+#@..********#
+#...********#
+#...*******.#
+5.D.********#
+#...******.*#
+
+message ...
+3...*****.**#
+2.D.********#
+1...******.*#
+#...********#
+#@..*******.#
+#...********#
+#...******.*#
+5.D.********#
+#...*****.**#
+
+message *SIGH*
+3...********#
+2.D.********#
+#...*******.#
+#...********#
+#@..********#
+#...********#
+#...*******.#
+5.C.********#
+6...********#
+
+message TO BE HONEST, KID...
+3................................#
+#.D..............................#
+#................................#
+#................................#
+#................................#
+#................................#
+#................................#
+#................................#
+#.@..............................#
+#................................#
+#................................#
+#................................#
+#................................#
+#................................#
+#................................#
+5..............................C.#
+6................................#
+
+message ALL THAT TALK ABOUT DYING HAPPY MOWING LAWNS...
+3................................#
+2..............................D.#
+#................................#
+#................................#
+#....................*...........#
+#................................#
+#................................#
+#................................#
+#................*.............@.#
+#................................#
+#................................#
+#................................#
+#............*...................#
+#................................#
+#................................#
+5.C..............................#
+6................................#
+
+message THAT WAS A LIE
+3##########.........#
+2##########.........#
+1.....#####.........#
+#...D.........###.###
+#.@....***....#.***.#
+#...C.........###.###
+#.....#####.........#
+5##########.........#
+6##########.........#
+
+message I COULDN'T POSSIBLY BE HAPPY WHEN THERE ARE STILL UNMOWED LAWNS
+3##########.........#
+2##########.........#
+#.....#####.........#
+#...D.........###.###
+#.............##***##
+#.@....***....#.***.#
+#.............##***##
+#...C.........###.###
+#.....#####.........#
+5##########.........#
+6##########.........#
+
+message WHICH IS WHY, KID, I BLACKMAILED SOME SCIENTISTS
+3##################
+2.........###.....#
+#.........###.....#
+#...C.....***...D@#
+#.........###.....#
+5.........###.....#
+6##################
+
+message THIS INVENTION WILL SAVE US, KID
+3**************************#
+2**************...*.......*#
+#****...........C.*.......*#
+#***D.*********...*.......*#
+#*@...*********************#
+#***D.............*.......*#
+#****...........C.*.......*#
+5****.............*.......*#
+6**************************#
+
+message SOON, ALL OUR WORRIES WILL FADE AWAY
+3#..................##
+2*.*................*#
+1*..C...............*#
+#*..................*#
+##.......D.@.D......##
+#*..................*#
+#*...............C..*#
+5*................*.*#
+6#..................##
+
+message SOON, ALL THE GRASS WILL DISAPPEAR
+3***************#
+#...............#
+#@CD............#
+#...............#
+#**********...**#
+#...............#
+#...............#
+#...............#
+#**...*****###**#
+#...............#
+#...............#
+#...............#
+#**###*****...**#
+#...............#
+#...............#
+5...............#
+6**********###**#
+
+message AHAHAHAHAHAHAHA
+3***************#
+#..............##
+#@CD...........##
+#..............##
+#************...#
+####...#........#
+#......#........#
+#......#.....####
+#...***...******#
+#...*.*........##
+#...*.*........##
+#...*.*###.....##
+#...*********...#
+##..............#
+##..............#
+##...........####
+5***************#
+6####...#########
+
+message THIS INVENTION WILL CHANGE EVERYTHING
+3###################################################################################################################
+#......................................................#####.......................................................#
+#......................................................C.@.D.......................................................#
+5......................................................#####.......................................................#
+6###################################################################################################################
+
+message LOOK AT IT
+3...@...#
+#.*****.#
+#.*****.#
+#.**E**.#
+4.*****.#
+#.*****.#
+#.......#
+
+message I CALL IT...
+3....***....#
+2....***....#
+#....***....#
+#....***....#
+#.@..E.*....#
+#....***....#
+4....***....#
+#....***....#
+#....***....#
+
+message "OUR SALVATION"
+3*******#
+2.......#
+#*******#
+#*@....*#
+#*.....*#
+#*..*..*#
+#*.....*#
+#*....E*#
+4*******#
+#.......#
+#*******#
+
+message YES YES YES, AHAHAHAHAHA
+3***********#
+2*@.......E*#
+1*.*.*.*.*.*#
+#*.........*#
+#*.*.*.*.*.*#
+#*.........*#
+#*.*.*.*.*.*#
+#*.........*#
+4*.*.*.*.*.*#
+#*E........*#
+#***********#
+
+message THE LAWNS!  THEY CRUMBLE OH SO QUICKLY!
+3*****#***#
+2*...*#*.*#
+1*.E.*#*.*#
+#*...*#*.*#
+#*...*#*.*#
+#*@..*#*.*#
+#*...*#*.*#
+#*...*#*.*#
+4*.E.*#*.*#
+#*...*#*.*#
+#*****#***#
+
+message HOUSE AFTER HOUSE, BLOCK AFTER BLOCK
+3###***********####
+2###*.........*####
+1###*.*******.*####
+####*.*.....*.*####
+#.#...*.....*...#.#
+#.#...*@.*.E*.E.#.#
+#.#...*.....*...#.#
+####*.*.....*.*####
+4###*.*******.*####
+####*.........*####
+####***********####
+
+message CITY AFTER CITY, COUNTRY AFTER COUNTRY
+3....#...*.E#
+2.####..*...#
+1.#*.......*#
+#.#.......*.#
+###....*....#
+#.....@.....#
+#....*...*###
+#.*.......#.#
+4*.....*.*#.#
+#...*..####.#
+#E.*...#....#
+
+message SOON, ALL OF THIS WORLD'S LAWNS WILL DISAPPEAR
+3*******.E#
+2**.......#
+#*....*.**#
+#*..*..*.*#
+#**..*..**#
+#*.*..*..*#
+4**.*....*#
+#........*#
+#@.*******#
+
+message I NEVER THOUGHT I'D SEE THE DAY
+3###########*#*##
+2.....#####.....#
+#.....#####.....#
+#.....#####.....#
+#.....#####.....#
+#.....**E**..D.@#
+#.....#####.....#
+4.....#####.....#
+5.....#####.....#
+#.....#####.....#
+###########*#*#*#
+
+message THE DAY THAT PERFECTION CAME TO THIS EARTH
+3###***********####
+2..#.....@.....#..#
+#..#...........#..#
+#..#...........#..#
+#..#..DE*.*ED..#..#
+#..#...........#..#
+4..#...........#..#
+5..#...........#..#
+####***********####
+
+message IT'S EXCITING, IT'S MARVELOUS
+3...........####
+2.*******...#..#
+#.*******...#..#
+#.**...**.D.#..#
+#.**@*E**...#..#
+#.**...**.E.#..#
+4.*******...#..#
+5.*******...#..#
+#...........####
+
+message IT'S OH SO DIVINE
+3*#********#**#
+##..........E*#
+#*...........##
+#*..*.*.*.*..*#
+#*.....*.....*#
+#*..*.....*..*#
+#*...*.*.*...*#
+#*..*.....*..*#
+#*.....*.....*#
+#*..*.*.*.*..*#
+4#.D.........*#
+5*@..........##
+#**#********#*#
+
+message THE LAWNS STAND NO CHANCE, KID
+3****************#
+2*.....***.....*.#
+1*.....***......*#
+#*@.C.E***......*#
+4*.....***......*#
+#*.....***.....*.#
+6****************#
+
+message HALF THE WORLD SHAVED IN NO TIME FLAT
+3...........#
+2.###.......#
+#.#.#*****..#
+#.###....*..#
+#..*...*.*..#
+#..#..E..#..#
+#..*.@...*..#
+#..*....###.#
+4..*****#.#.#
+#.......###.#
+6C..........#
+
+message YES YES YES
+3...........#
+2.###.......#
+#.#.##****..#
+#.##.....*..#
+#..#...*.*..#
+#..*..E..*..#
+#..*.@...#..#
+#..*.....##.#
+4..****##.#.#
+#.......###.#
+6C..........#
+
+message HOW DOES IT FEEL BEING OBLITERATED, PUNY STRANDS OF GRASS?
+3#..................##
+2*..............***.#.
+#*..C*..........*E*.#.
+#*..............***.#.
+##.......D.@.D......##
+#*.***..............#.
+4*.*E*..........*C..#.
+5*.***..............#.
+6#..................##
+
+message KID, IT'S HAPPENING
+3##************###
+2#@.............##
+1*.D............*#
+#*..E...........*#
+#*...C..........*#
+#*....#########.*#
+#*....*********.*#
+#*....###.#.###.*#
+#*....#.#***#.#.*#
+#*....#.#.*.#.#.*#
+#*....#.#***#.#.*#
+#*....###.#.###.*#
+#*....*********.*#
+4*....#########.*#
+5#..............##
+6##************###
+
+message WE'RE ZEROING IN ON THIS PLANET'S LAST REMAINING MISTAKE
+3#####*************#
+#.....*****.......*#
+#.....*****.......*#
+#...E.*...*.......*#
+#.@.D.*...*....#..*#
+#...C.*...*.......*#
+4.....*****.......*#
+5.....*****.......*#
+6#####*************#
+
+message WE ARE CLOSE.  THIS PLANET IS ALMOST SAVED
+3*********************************************#
+#@............................................#
+#*********************************************#
+
+message THE GHOST SHALL BE SHAVEN
+3########.E...C.########
+########..##.##..#######
+########.#.##.##.#######
+#######..#.##.##..######
+#######...##.##...######
+##*####...........###*##
+#**........##....*#..**#
+##*###.....##....####*##
+#######..........#######
+#######.........########
+########...@....########
+########.......#########
+#########.....##########
+#########.....##########
+#########.....##########
+#########....###########
+4########...############
+5########..#############
+6#######D.##############
+
+message IT IS DONE
+message WE HAVE RAZED THE LAND OF ALL ITS IMPERFECTIONS
+message NO MORE TUFTS
+message NO MORE STRANDS
+message NO MORE BLADES
+message THIS IS HOW IT WAS MEANT TO BE
+message THIS...
+message THIS IS...
+message ... HOW... IT WAS MEANT... TO BE...
+
+message THE END
+
+message CREDITS
+message GAME BY WINTERBEAK
+message MUSIC BY PATRICIA TAXXON
+message PUZZLESCRIPT GAME BAR BY PEDROPSI
+message TESTING BY THATONEGUY
+
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+
+
+(
+3..........................#
+#..........#######.........#
+#.........#.......#........#
+#........#..##.##..#.......#
+#........#.#.##.##.#.......#
+#.......#..#.##.##..#......#
+#...#...#...##.##...#..#...#
+#..#.####...........###.#..#
+#.#..........##.....#....#.#
+#..#.###.....##....####.#..#
+#...#...#..........#...#...#
+#.......#.........#........#
+#........#........#........#
+#........#.......#.........#
+#.........#.....#..........#
+#.........#.....#..........#
+#.........#.....#..........#
+#.........#....#...........#
+#.........#...#............#
+#.........#..#.............#
+#........#..#..............#
+#.......####...............#
+#..........................#
+)
+
+(TOO HARD
+********
+@..*****
+**..****
+***..***
+****..**
+*****...
+********
+)
+
+
+
